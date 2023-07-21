@@ -4,8 +4,8 @@ const fs = require('node:fs/promises');
 async function writeFile (filePath, data, callback) {
   
   const createDir = await fs.mkdir(filePath, { recursive: true });
-  const createFile = await fs.writeFile(`${filePath}/hola.txt`,data, { encoding: 'utf8' })
-    .then(callback)
+  const createFile = await fs.writeFile(filePath, data, { encoding: 'utf8' })
+    .then(callback(null))
     .catch((err)=>{
       callback(err)
     });
