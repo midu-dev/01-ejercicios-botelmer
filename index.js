@@ -1,9 +1,12 @@
 const fs = require('node:fs/promises');
+const path = require('node:path')
 
 // Ejercicio 2
 async function writeFile (filePath, data, callback) {
+  const file = path.join(filePath, 'file.txt')
+
   const createDir = await fs.mkdir(filePath, { recursive: true });
-  const createFile = await fs.writeFile(filePath + '/file.txt', data, { encoding: 'utf8' })
+  const createFile = await fs.writeFile(file, data, { encoding: 'utf8' })
     .then(()=>{
       callback(null);
     })
