@@ -45,10 +45,11 @@ test.describe('3. readFileAndCount', () => {
 
     // call readFileAndCount
     readFileAndCount('node', (err, count) => {
-      // remove tmp folder
-      fs.rmSync('tmp', { recursive: true })
+    
       assert.ifError(err)
       assert.strictEqual(count, 3)
+       // remove tmp folder
+      fs.rmSync('tmp', { recursive: true })
       done()
     })
   })
@@ -76,9 +77,9 @@ test.describe('3. readFileAndCount', () => {
 
     // call readFileAndCount
     readFileAndCount(undefined, (err, count) => {
-      fs.rmSync('tmp', { recursive: true })
-
       assert.strictEqual(err.message, 'No se ha especificado la palabra a buscar')
+      // remove tmp folder
+      fs.rmSync('tmp', { recursive: true })
       done()
     })
   })
